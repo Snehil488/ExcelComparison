@@ -22,6 +22,8 @@ namespace ExcelComparison
             var allRows1 = new List<Row>();
             var allRows2 = new List<Row>();
             Row row;
+            bool flag = false;
+            int temp = 0;
 
             //Loading Excel to save output
             WorkBook workBook = WorkBook.Load("Comparison2.xlsx");
@@ -110,6 +112,8 @@ namespace ExcelComparison
                 };
                 allRows2.Add(row);
             }
+
+            //for article RU Report
             if (isRUReport) 
             {
                 foreach (var item1 in allRows1)
@@ -155,36 +159,38 @@ namespace ExcelComparison
                             {
                                 Console.WriteLine("rows did not match for article no. " + item1.Entry1 + " range : " + item1.Entry3);
 
-                                if (item1.Entry3 != item2.Entry3) { newSheet[$"C{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry4 != item2.Entry4) { newSheet[$"D{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry5 != item2.Entry5) { newSheet[$"E{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry6 != item2.Entry6) { newSheet[$"F{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry7 != item2.Entry7) { newSheet[$"G{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry8 != item2.Entry8) { newSheet[$"H{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry9 != item2.Entry9) { newSheet[$"I{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry10 != item2.Entry10) { newSheet[$"J{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry11 != item2.Entry11) { newSheet[$"K{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry12 != item2.Entry12) { newSheet[$"L{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry13 != item2.Entry13) { newSheet[$"M{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry14 != item2.Entry14) { newSheet[$"N{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry15 != item2.Entry15) { newSheet[$"O{rowNum}"].Style.BackgroundColor = "#ffcccc"; }                          
-                                if (item1.Entry17 != item2.Entry17) { newSheet[$"Q{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry18 != item2.Entry18) { newSheet[$"R{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry19 != item2.Entry19) { newSheet[$"S{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry20 != item2.Entry20) { newSheet[$"T{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry21 != item2.Entry21) { newSheet[$"U{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry22 != item2.Entry22) { newSheet[$"V{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry23 != item2.Entry23) { newSheet[$"W{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry24 != item2.Entry24) { newSheet[$"X{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry25 != item2.Entry25) { newSheet[$"Y{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry26 != item2.Entry26) { newSheet[$"Z{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry27 != item2.Entry27) { newSheet[$"AA{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry28 != item2.Entry28) { newSheet[$"AB{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry29 != item2.Entry29) { newSheet[$"AC{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry30 != item2.Entry30) { newSheet[$"AD{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
+                                if (item1.Entry3 != item2.Entry3) { newSheet[$"C{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry4 != item2.Entry4) { newSheet[$"D{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry5 != item2.Entry5) { newSheet[$"E{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry6 != item2.Entry6) { newSheet[$"F{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry7 != item2.Entry7) { newSheet[$"G{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry8 != item2.Entry8) { newSheet[$"H{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry9 != item2.Entry9) { newSheet[$"I{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry10 != item2.Entry10) { newSheet[$"J{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry11 != item2.Entry11) { newSheet[$"K{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry12 != item2.Entry12) { newSheet[$"L{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry13 != item2.Entry13) { newSheet[$"M{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry14 != item2.Entry14) { newSheet[$"N{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry15 != item2.Entry15) { newSheet[$"O{rowNum}"].Style.BackgroundColor = "#ff8080"; }                          
+                                if (item1.Entry17 != item2.Entry17) { newSheet[$"Q{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry18 != item2.Entry18) { newSheet[$"R{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry19 != item2.Entry19) { newSheet[$"S{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry20 != item2.Entry20) { newSheet[$"T{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry21 != item2.Entry21) { newSheet[$"U{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry22 != item2.Entry22) { newSheet[$"V{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry23 != item2.Entry23) { newSheet[$"W{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry24 != item2.Entry24) { newSheet[$"X{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry25 != item2.Entry25) { newSheet[$"Y{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry26 != item2.Entry26) { newSheet[$"Z{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry27 != item2.Entry27) { newSheet[$"AA{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry28 != item2.Entry28) { newSheet[$"AB{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry29 != item2.Entry29) { newSheet[$"AC{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry30 != item2.Entry30) { newSheet[$"AD{rowNum}"].Style.BackgroundColor = "#ff8080"; }
 
                                 //rowNum++;
                             }
+
+                            break;
                         }
                     }
                     if (isNew == 1)
@@ -225,7 +231,90 @@ namespace ExcelComparison
 
                     rowNum++;
                 }
+
+                //writing records deleted after baseload
+                foreach (var item2 in allRows2)
+                {
+                    foreach (var item1 in allRows1)
+                    {
+                        if (item1.Entry1.Equals(item2.Entry1) && item1.Entry3.Equals(item2.Entry3) && item1.Entry16.Equals(item2.Entry16))
+                        {
+                            flag = true;
+                            break;
+                        }
+                    }
+
+                    if (!flag)
+                    {
+                        //write the record in the sheet
+                        newSheet[$"A{rowNum}"].Value = item2.Entry1;
+                        newSheet[$"B{rowNum}"].Value = item2.Entry2;
+                        newSheet[$"C{rowNum}"].Value = item2.Entry3;
+                        newSheet[$"D{rowNum}"].Value = item2.Entry4;
+                        newSheet[$"E{rowNum}"].Value = item2.Entry5;
+                        newSheet[$"F{rowNum}"].Value = item2.Entry6;
+                        newSheet[$"G{rowNum}"].Value = item2.Entry7;
+                        newSheet[$"H{rowNum}"].Value = item2.Entry8;
+                        newSheet[$"I{rowNum}"].Value = item2.Entry9;
+                        newSheet[$"J{rowNum}"].Value = item2.Entry10;
+                        newSheet[$"K{rowNum}"].Value = item2.Entry11;
+                        newSheet[$"L{rowNum}"].Value = item2.Entry12;
+                        newSheet[$"M{rowNum}"].Value = item2.Entry13;
+                        newSheet[$"N{rowNum}"].Value = item2.Entry14;
+                        newSheet[$"O{rowNum}"].Value = item2.Entry15;
+                        newSheet[$"P{rowNum}"].Value = item2.Entry16;
+                        newSheet[$"Q{rowNum}"].Value = item2.Entry17;
+                        newSheet[$"R{rowNum}"].Value = item2.Entry18;
+                        newSheet[$"S{rowNum}"].Value = item2.Entry19;
+                        newSheet[$"T{rowNum}"].Value = item2.Entry20;
+                        newSheet[$"U{rowNum}"].Value = item2.Entry21;
+                        newSheet[$"V{rowNum}"].Value = item2.Entry22;
+                        newSheet[$"W{rowNum}"].Value = item2.Entry23;
+                        newSheet[$"X{rowNum}"].Value = item2.Entry24;
+                        newSheet[$"Y{rowNum}"].Value = item2.Entry25;
+                        newSheet[$"Z{rowNum}"].Value = item2.Entry26;
+                        newSheet[$"AA{rowNum}"].Value = item2.Entry27;
+                        newSheet[$"AB{rowNum}"].Value = item2.Entry28;
+                        newSheet[$"AC{rowNum}"].Value = item2.Entry29;
+                        newSheet[$"AD{rowNum}"].Value = item2.Entry30;
+
+                        //color the row
+                        newSheet[$"A{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"B{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"C{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"D{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"E{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"F{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"G{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"H{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"I{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"J{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"K{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"L{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"M{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"N{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"O{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"P{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"Q{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"R{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"S{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"T{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"U{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"V{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"W{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"X{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"Y{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"Z{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"AA{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"AB{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"AC{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"AD{rowNum}"].Style.BackgroundColor = "#ffff00";
+
+                        rowNum++;
+                    }
+                }
             }
+            //for Article Report
             else 
             {
                 foreach (var item1 in allRows1)
@@ -272,37 +361,39 @@ namespace ExcelComparison
                                 Console.WriteLine("rows did not match for article no. " + item1.Entry1 + " range : " + item1.Entry3);
 
 
-                                if (item1.Entry3 != item2.Entry3) { newSheet[$"C{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry4 != item2.Entry4) { newSheet[$"D{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry5 != item2.Entry5) { newSheet[$"E{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry6 != item2.Entry6) { newSheet[$"F{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry7 != item2.Entry7) { newSheet[$"G{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry8 != item2.Entry8) { newSheet[$"H{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry9 != item2.Entry9) { newSheet[$"I{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry10 != item2.Entry10) { newSheet[$"J{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry11 != item2.Entry11) { newSheet[$"K{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry12 != item2.Entry12) { newSheet[$"L{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry13 != item2.Entry13) { newSheet[$"M{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry14 != item2.Entry14) { newSheet[$"N{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry15 != item2.Entry15) { newSheet[$"O{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry16 != item2.Entry16) { newSheet[$"P{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry17 != item2.Entry17) { newSheet[$"Q{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry18 != item2.Entry18) { newSheet[$"R{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry19 != item2.Entry19) { newSheet[$"S{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry20 != item2.Entry20) { newSheet[$"T{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry21 != item2.Entry21) { newSheet[$"U{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry22 != item2.Entry22) { newSheet[$"V{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry23 != item2.Entry23) { newSheet[$"W{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry24 != item2.Entry24) { newSheet[$"X{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry25 != item2.Entry25) { newSheet[$"Y{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry26 != item2.Entry26) { newSheet[$"Z{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry27 != item2.Entry27) { newSheet[$"AA{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry28 != item2.Entry28) { newSheet[$"AB{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry29 != item2.Entry29) { newSheet[$"AC{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
-                                if (item1.Entry30 != item2.Entry30) { newSheet[$"AD{rowNum}"].Style.BackgroundColor = "#ffcccc"; }
+                                if (item1.Entry3 != item2.Entry3) { newSheet[$"C{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry4 != item2.Entry4) { newSheet[$"D{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry5 != item2.Entry5) { newSheet[$"E{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry6 != item2.Entry6) { newSheet[$"F{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry7 != item2.Entry7) { newSheet[$"G{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry8 != item2.Entry8) { newSheet[$"H{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry9 != item2.Entry9) { newSheet[$"I{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry10 != item2.Entry10) { newSheet[$"J{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry11 != item2.Entry11) { newSheet[$"K{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry12 != item2.Entry12) { newSheet[$"L{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry13 != item2.Entry13) { newSheet[$"M{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry14 != item2.Entry14) { newSheet[$"N{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry15 != item2.Entry15) { newSheet[$"O{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry16 != item2.Entry16) { newSheet[$"P{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry17 != item2.Entry17) { newSheet[$"Q{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry18 != item2.Entry18) { newSheet[$"R{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry19 != item2.Entry19) { newSheet[$"S{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry20 != item2.Entry20) { newSheet[$"T{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry21 != item2.Entry21) { newSheet[$"U{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry22 != item2.Entry22) { newSheet[$"V{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry23 != item2.Entry23) { newSheet[$"W{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry24 != item2.Entry24) { newSheet[$"X{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry25 != item2.Entry25) { newSheet[$"Y{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry26 != item2.Entry26) { newSheet[$"Z{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry27 != item2.Entry27) { newSheet[$"AA{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry28 != item2.Entry28) { newSheet[$"AB{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry29 != item2.Entry29) { newSheet[$"AC{rowNum}"].Style.BackgroundColor = "#ff8080"; }
+                                if (item1.Entry30 != item2.Entry30) { newSheet[$"AD{rowNum}"].Style.BackgroundColor = "#ff8080"; }
 
                                 //rowNum++;
                             }
+
+                            break;
                         }
                     }
                     if (isNew == 1)
@@ -343,12 +434,93 @@ namespace ExcelComparison
 
                     rowNum++;
                 }
+
+                //writing records deleted after baseload
+                foreach (var item2 in allRows2)
+                {
+                    foreach (var item1 in allRows1)
+                    {
+                        if (item1.Entry1.Equals(item2.Entry1) && item1.Entry3.Equals(item2.Entry3))
+                        {
+                            flag = true;
+                            break;
+                        }
+                    }
+                    if (!flag)
+                    {
+                        temp++;
+                        //write the record in the sheet
+                        newSheet[$"A{rowNum}"].Value = item2.Entry1;
+                        newSheet[$"B{rowNum}"].Value = item2.Entry2;
+                        newSheet[$"C{rowNum}"].Value = item2.Entry3;
+                        newSheet[$"D{rowNum}"].Value = item2.Entry4;
+                        newSheet[$"E{rowNum}"].Value = item2.Entry5;
+                        newSheet[$"F{rowNum}"].Value = item2.Entry6;
+                        newSheet[$"G{rowNum}"].Value = item2.Entry7;
+                        newSheet[$"H{rowNum}"].Value = item2.Entry8;
+                        newSheet[$"I{rowNum}"].Value = item2.Entry9;
+                        newSheet[$"J{rowNum}"].Value = item2.Entry10;
+                        newSheet[$"K{rowNum}"].Value = item2.Entry11;
+                        newSheet[$"L{rowNum}"].Value = item2.Entry12;
+                        newSheet[$"M{rowNum}"].Value = item2.Entry13;
+                        newSheet[$"N{rowNum}"].Value = item2.Entry14;
+                        newSheet[$"O{rowNum}"].Value = item2.Entry15;
+                        newSheet[$"P{rowNum}"].Value = item2.Entry16;
+                        newSheet[$"Q{rowNum}"].Value = item2.Entry17;
+                        newSheet[$"R{rowNum}"].Value = item2.Entry18;
+                        newSheet[$"S{rowNum}"].Value = item2.Entry19;
+                        newSheet[$"T{rowNum}"].Value = item2.Entry20;
+                        newSheet[$"U{rowNum}"].Value = item2.Entry21;
+                        newSheet[$"V{rowNum}"].Value = item2.Entry22;
+                        newSheet[$"W{rowNum}"].Value = item2.Entry23;
+                        newSheet[$"X{rowNum}"].Value = item2.Entry24;
+                        newSheet[$"Y{rowNum}"].Value = item2.Entry25;
+                        newSheet[$"Z{rowNum}"].Value = item2.Entry26;
+                        newSheet[$"AA{rowNum}"].Value = item2.Entry27;
+                        newSheet[$"AB{rowNum}"].Value = item2.Entry28;
+                        newSheet[$"AC{rowNum}"].Value = item2.Entry29;
+                        newSheet[$"AD{rowNum}"].Value = item2.Entry30;
+
+                        //color the row
+                        newSheet[$"A{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"B{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"C{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"D{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"E{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"F{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"G{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"H{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"I{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"J{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"K{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"L{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"M{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"N{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"O{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"P{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"Q{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"R{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"S{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"T{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"U{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"V{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"W{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"X{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"Y{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"Z{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"AA{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"AB{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"AC{rowNum}"].Style.BackgroundColor = "#ffff00";
+                        newSheet[$"AD{rowNum}"].Style.BackgroundColor = "#ffff00";
+
+                        rowNum++;
+                    }
+                }
             }
             
 
-            Console.WriteLine("\nNo. of Entirely new records found : " + entirelyNewRecord);
-
-            //Console.WriteLine($"\n No. of rows not found in sheet1 present in sheet2 : {Convert.ToInt32(rows2) -numOfRowsInSheet2FoundInSheet1}");
+            Console.WriteLine("\nNo. of new records found after baseload : " + entirelyNewRecord);
+            Console.WriteLine("\nNo. of Records deleted after baseload : " + temp);
 
             workBook.SaveAs("Comparison2.xlsx");
         }
