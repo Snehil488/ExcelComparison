@@ -9,7 +9,7 @@ namespace ExcelComparison
     {
         public static void CompareExcel(string path1, string path2, string rows1, string column1,string rows2,string column2, string sheet, bool isRUReport)
         {
-            Console.WriteLine("\nProcessing...\n");
+            Console.WriteLine("\nLoading Sheets...\n");
 
             var workbook1 = WorkBook.Load(path1);
             var workbook2 = WorkBook.Load(path2);
@@ -152,7 +152,7 @@ namespace ExcelComparison
                     foreach (var item2 in allRows2)
                     {
                         //comparing article number and range , same article no. exists in different range
-                        if (item1.Entry1.Equals(item2.Entry1) && item1.Entry3.Equals(item2.Entry3) && item1.Entry16.Equals(item2.Entry16))
+                        if (item1.Entry1.Equals(item2.Entry1) && item1.Entry16.Equals(item2.Entry16))
                         {
                             isNew = 0;
                             if (!item1.Equals(item2))
@@ -232,12 +232,15 @@ namespace ExcelComparison
                     rowNum++;
                 }
 
+                Console.WriteLine("\nSearching for deleted records(if any)");
+                
                 //writing records deleted after baseload
                 foreach (var item2 in allRows2)
                 {
+                    flag = false;
                     foreach (var item1 in allRows1)
                     {
-                        if (item1.Entry1.Equals(item2.Entry1) && item1.Entry3.Equals(item2.Entry3) && item1.Entry16.Equals(item2.Entry16))
+                        if (item2.Entry1.Equals(item1.Entry1) && item2.Entry16.Equals(item1.Entry16))
                         {
                             flag = true;
                             break;
@@ -246,6 +249,7 @@ namespace ExcelComparison
 
                     if (!flag)
                     {
+                        temp++;
                         //write the record in the sheet
                         newSheet[$"A{rowNum}"].Value = item2.Entry1;
                         newSheet[$"B{rowNum}"].Value = item2.Entry2;
@@ -435,9 +439,12 @@ namespace ExcelComparison
                     rowNum++;
                 }
 
+                Console.WriteLine("\nSearching for deleted records(if any)");
+
                 //writing records deleted after baseload
                 foreach (var item2 in allRows2)
                 {
+                    flag = false;
                     foreach (var item1 in allRows1)
                     {
                         if (item1.Entry1.Equals(item2.Entry1) && item1.Entry3.Equals(item2.Entry3))
